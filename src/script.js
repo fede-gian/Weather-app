@@ -3,8 +3,15 @@ function showWeather(response) {
   let temperatureElement = document.querySelector(".current-temperature-value");
   let temperature = Math.round(response.data.temperature.current);
   let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind-speed");
+
+  console.log(response.data);
+
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = temperature;
 }
 
