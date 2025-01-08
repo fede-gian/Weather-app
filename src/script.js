@@ -5,13 +5,14 @@ function showWeather(response) {
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
-
-  console.log(response.data);
+  let timeElement = document.querySelector("#time");
+  let time = new Date(response.data.time * 1000);
 
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  timeElement.innerHTML = `${day.getDay()} ${date.getHours()}:${date.getMinutes()}`;
   temperatureElement.innerHTML = temperature;
 }
 
@@ -56,7 +57,7 @@ function formatDate(date) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-let currentDateELement = document.querySelector("#current-date");
+let currentDateELement = document.querySelector("#time");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
