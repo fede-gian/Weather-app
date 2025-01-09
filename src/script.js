@@ -18,7 +18,7 @@ function showWeather(response) {
   temperatureElement.innerHTML = temperature;
 }
 
-function search(event) {
+function searchCity(event) {
   event.preventDefault();
   let searchInputElement = document.querySelector("#search-input");
   let city = searchInputElement.value;
@@ -32,16 +32,6 @@ function search(event) {
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
-  let day = date.getDay();
-
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-
   let days = [
     "Sunday",
     "Monday",
@@ -51,15 +41,21 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
+  let day = days[date.getDay()];
 
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${day} ${hours}:${minutes}`;
 }
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
+searchForm.addEventListener("submit", searchCity);
 
 let currentDateELement = document.querySelector("#time");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
+
+let;
