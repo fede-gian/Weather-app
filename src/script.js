@@ -20,11 +20,14 @@ function showWeather(response) {
   getForecast(response.data.city);
 }
 
-function searchCity(event) {
+function handleSearch(event) {
   event.preventDefault();
   let searchInputElement = document.querySelector("#search-input");
   let city = searchInputElement.value;
+  searchCity(city);
+}
 
+function searchCity(city) {
   let apiKey = "adc0c17ee81tacb6636fff3dfe47o3f8";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
@@ -86,9 +89,11 @@ function displayForecast(response) {
 }
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
+searchForm.addEventListener("submit", handleSearch);
 
 let currentDateELement = document.querySelector("#time");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
+
+searchCity("Venice");
